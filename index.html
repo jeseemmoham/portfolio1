@@ -1,1203 +1,540 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeseem | Full Stack Developer</title>
+    <title>Mohamed Jeseem T | Full Stack Developer</title>
+    <meta name="description"
+        content="Portfolio of Mohamed Jeseem T - Full Stack Developer, MERN Stack expert, and AI enthusiast.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --dark: #1f2937;
-            --darker: #111827;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --gray-light: #e5e7eb;
-            --success: #10b981;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            transition: var(--transition);
-        }
-
-        body.dark-mode {
-            background-color: var(--darker);
-            color: var(--light);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        body.dark-mode header {
-            background-color: rgba(31, 41, 55, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        body.dark-mode .nav-links a {
-            color: var(--light);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--dark);
-            transition: var(--transition);
-        }
-
-        body.dark-mode .theme-toggle {
-            color: var(--light);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        body.dark-mode .menu-toggle {
-            color: var(--light);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 1.2rem;
-        }
-
-        .profile-img-placeholder {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-            font-weight: bold;
-        }
-
-        .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        body.dark-mode .hero p {
-            color: var(--gray-light);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(37, 99, 235, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 70px;
-            height: 4px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 50px;
-        }
-
-        body.dark-mode .section-subtitle {
-            color: var(--gray-light);
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        body.dark-mode .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Education Section */
-        .education-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            padding: 20px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark-mode .timeline-content {
-            background: var(--card-bg);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            top: 30px;
-            border-radius: 50%;
-            z-index: 1;
-            border: 4px solid var(--primary);
-        }
-
-        body.dark-mode .timeline-item:nth-child(odd) .timeline-content::after {
-            background-color: var(--card-bg);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: -10px;
-            background-color: white;
-            top: 30px;
-            border-radius: 50%;
-            z-index: 1;
-            border: 4px solid var(--primary);
-        }
-
-        body.dark-mode .timeline-item:nth-child(even) .timeline-content::after {
-            background-color: var(--card-bg);
-        }
-
-        .education-year {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .project-card {
-            overflow: hidden;
-        }
-
-        .project-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .tech-tag {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        body.dark-mode .tech-tag {
-            background: rgba(37, 99, 235, 0.2);
-        }
-
-        .project-details-btn {
-            margin-top: 15px;
-            background: none;
-            border: none;
-            color: var(--primary);
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0;
-        }
-
-        .project-details-btn:hover {
-            text-decoration: underline;
-        }
-
-        .project-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            margin-top: 15px;
-            border-top: 1px solid var(--gray-light);
-            padding-top: 15px;
-        }
-
-        body.dark-mode .project-details {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .project-details.active {
-            max-height: 1000px;
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .skill-category h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .skill-item {
-            margin-bottom: 15px;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: var(--gray-light);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        body.dark-mode .skill-bar {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 5px;
-        }
-
-        /* Certifications */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .certification-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .cert-icon {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        /* Coding Profiles */
-        .coding-profiles {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .profile-card {
-            text-align: center;
-            width: 200px;
-        }
-
-        .profile-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .profile-stats {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 10px 0;
-            color: var(--primary);
-        }
-
-        /* Achievements */
-        .achievement-card {
-            text-align: center;
-            max-width: 600px;
-            margin: 50px auto 0;
-            padding: 30px;
-            position: relative;
-        }
-
-        .achievement-icon {
-            font-size: 3rem;
-            color: var(--success);
-            margin-bottom: 20px;
-        }
-
-        /* Internship */
-        .internship-card {
-            max-width: 800px;
-            margin: 50px auto 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        body.dark-mode footer {
-            background-color: #0f172a;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-links h3 {
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: #d1d5db;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 140px 0 80px;
-            }
-
-            .hero-content {
-                order: 2;
-            }
-
-            .hero-image {
-                order: 1;
-                margin-bottom: 40px;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .education-timeline::before {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content::after {
-                left: -10px;
-                right: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                padding: 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                transition: var(--transition);
-                z-index: 999;
-            }
-
-            body.dark-mode .nav-links {
-                background-color: var(--dark);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-info {
-                justify-content: center;
-            }
-
-            .social-icons {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .profile-img {
-                width: 250px;
-                height: 250px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Header & Navigation -->
-    <header>
+    <canvas id="particleCanvas"></canvas>
+
+    <header id="mainHeader">
         <div class="container">
             <nav>
-                <a href="#" class="logo">Jeseem</a>
+                <a href="#" class="logo">JT<span class="logo-dot">.</span></a>
                 <div class="nav-links" id="navLinks">
-                    <a href="#home">Home</a>
+                    <a href="#home" class="nav-active">Home</a>
                     <a href="#education">Education</a>
                     <a href="#projects">Projects</a>
                     <a href="#skills">Skills</a>
-                    <a href="#certifications">Certifications</a>
+                    <a href="#achievements">Achievements</a>
+                    <a href="#resume">Resume</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
-        <div class="container">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="container hero-grid">
             <div class="hero-content">
-                <h1>Hi, I'm <span>Jeseem</span></h1>
-                <h2>Full Stack & Web Developer</h2>
-                <p>BE.CCE student at Sri Eshwar College of Engineering passionate about building scalable web applications, full-stack development, and creating innovative software solutions.</p>
+                <div class="hero-badge"><span class="pulse-dot"></span> Available for opportunities</div>
+                <h1>Hi, I'm <span class="neon-text">Mohamed Jeseem T</span></h1>
+                <p class="hero-role">I'm a <span id="typingText"></span><span class="cursor-blink">|</span></p>
+                <p class="hero-desc">BE.CCE student at Sri Eshwar College of Engineering passionate about building
+                    scalable web applications, AI-powered solutions, and innovative software products.</p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-glow"><i class="fas fa-rocket"></i> View My Work</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item"><span class="stat-num" data-target="5">0</span>+<br><small>Projects</small>
+                    </div>
+                    <div class="stat-item"><span class="stat-num" data-target="1000">0</span>+<br><small>Problems
+                            Solved</small></div>
+                    <div class="stat-item"><span class="stat-num"
+                            data-target="5">0</span>+<br><small>Certifications</small></div>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="profile-img">
-                    <div class="profile-img-placeholder">
-                           <img src="jeseem.jpeg" alt="Jeseem" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
-                    </div>
-                </div>
+                <div class="img-ring"><img src="jeseem2.jpeg" alt="Mohamed Jeseem T" class="profile-img"></div>
+                <div class="floating-badge badge-1"><i class="fab fa-react"></i></div>
+                <div class="floating-badge badge-2"><i class="fab fa-node-js"></i></div>
+                <div class="floating-badge badge-3"><i class="fab fa-python"></i></div>
             </div>
         </div>
+        <div class="section-wave"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="var(--bg-section)" />
+            </svg></div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education">
+    <!-- Education -->
+    <section id="education" class="section-alt">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <p class="section-subtitle">My academic journey and achievements</p>
-            
-            <div class="education-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content card">
-                        <span class="education-year">2024 - 2028</span>
+            <h2 class="section-title reveal-el">Education</h2>
+            <p class="section-sub reveal-el">My academic journey and achievements</p>
+            <div class="timeline">
+                <div class="tl-item reveal-el">
+                    <div class="tl-dot"></div>
+                    <div class="glass-card tl-card">
+                        <span class="badge-pill">2024 - 2028</span>
                         <h3>BE. Computer and Communication Engineering</h3>
                         <h4>Sri Eshwar College of Engineering</h4>
-                        <p>Current CGPA: <strong>8.23</strong></p>
-                        <p>Pursuing my degree with focus on software development, web technologies, data structures, algorithms, and communication systems.</p>
+                        <p>Current CGPA: <strong>8.16</strong> (III Semester)</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content card">
-                        <span class="education-year">2023 - 2024</span>
+                <div class="tl-item reveal-el">
+                    <div class="tl-dot"></div>
+                    <div class="glass-card tl-card">
+                        <span class="badge-pill">2023 - 2024</span>
                         <h3>Higher Secondary Certificate (HSC)</h3>
                         <h4>Good Shepherd Matriculation School</h4>
                         <p>Percentage: <strong>85%</strong></p>
-                        <p>Completed with focus on Mathematics, Physics, and Chemistry.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content card">
-                        <span class="education-year">2021 - 2022</span>
+                <div class="tl-item reveal-el">
+                    <div class="tl-dot"></div>
+                    <div class="glass-card tl-card">
+                        <span class="badge-pill">2021 - 2022</span>
                         <h3>Secondary School Leaving Certificate (SSLC)</h3>
                         <h4>Oxford Matriculation School</h4>
-                        <p>Percentage: <strong>78.8%</strong></p>
-                        <p>Foundation in core subjects with excellent performance in Mathematics and Science.</p>
+                        <p>Percentage: <strong>79%</strong></p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="section-wave wave-flip"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,0 1080,120 1440,60 L1440,120 L0,120 Z" fill="var(--bg-main)" />
+            </svg></div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" style="background-color: #f8fafc;">
+    <!-- Projects -->
+    <section id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-subtitle">Some of my recent work and projects</p>
-            
+            <h2 class="section-title reveal-el">Projects</h2>
+            <p class="section-sub reveal-el">Featured projects showcasing my technical expertise</p>
             <div class="projects-grid">
-                <div class="project-card card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Smart Job Portal" class="project-image">
-                    <h3>HireFlow - Smart Job Portal & ATS</h3>
-                    <p>A MERN stack–based smart job portal and applicant tracking system that connects recruiters and job seekers through secure authentication, role-based access, job posting, resume uploads, and real-time application tracking.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">JWT Auth</span>
-                        <span class="tech-tag">REST API</span>
+                <div class="glass-card project-card reveal-el">
+                    <div class="proj-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"
+                            alt="AI Medical Assistant" loading="lazy">
+                        <div class="proj-overlay"><a href="#" class="proj-link"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                        <span class="proj-date">January 2026</span>
                     </div>
-                    <button class="project-details-btn" onclick="toggleProjectDetails('project1')">
-                        <i class="fas fa-chevron-down"></i> More About This Project
-                    </button>
-                    <div class="project-details" id="project1-details">
-                        <p><strong>HireFlow</strong> is a full-stack web application built using the MERN stack that streamlines the recruitment process for companies and job seekers. The platform provides a centralized system where recruiters can post jobs, manage applications, and track candidate status, while job seekers can search and apply for jobs efficiently.</p>
-                        <p>The system supports role-based access control with three user roles: Admin, Recruiter, and Job Seeker. Recruiters must be approved by the Admin before posting jobs, ensuring authenticity and platform trust. Job seekers can upload resumes, apply for jobs, and track application status in real time.</p>
-                        <p>HireFlow includes features such as secure authentication using JWT, resume upload and parsing, advanced job search with filters, application status tracking, and dashboard analytics for recruiters and admins. Email notifications keep users informed about application updates and approvals.</p>
-                        <p>This project is designed to reflect real-world enterprise recruitment systems, demonstrating strong backend architecture, secure APIs, and scalable full-stack development practices.</p>
+                    <div class="proj-body">
+                        <h3>AI Medical Assistant</h3>
+                        <p>Full-stack AI-powered healthcare assistant with prescription scanning (OCR), symptom
+                            analysis, and smart recommendations.</p>
+                        <div class="tags">
+                            <span>ReactJS</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>Tesseract
+                                OCR</span><span>Gemini AI</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="project-card card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="MERN Stack Development" class="project-image">
-                    <h3>MERN Stack Web Applications</h3>
-                    <p>Full-stack web applications developed during my campus internship using MongoDB, Express.js, React.js, and Node.js.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">REST API</span>
-                        <span class="tech-tag">Authentication</span>
+                <div class="glass-card project-card reveal-el">
+                    <div class="proj-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600&q=80"
+                            alt="Campus Waste Management" loading="lazy">
+                        <div class="proj-overlay"><a href="#" class="proj-link"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                        <span class="proj-date">March 2026</span>
                     </div>
-                    <p><strong>Experience:</strong> Hands-on practical experience in building complete web applications with authentication, databases, and responsive UI.</p>
+                    <div class="proj-body">
+                        <h3>Campus Waste Management System</h3>
+                        <p>Smart waste reporting and monitoring platform with image-based waste classification and live
+                            location tracking.</p>
+                        <div class="tags">
+                            <span>ReactJS</span><span>Node.js</span><span>MongoDB</span><span>YOLOv8</span><span>Roboflow</span><span>Google
+                                Maps API</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="project-card card">
-                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Skin Cancer Detection" class="project-image">
-                    <h3>Skin Cancer Detection</h3>
-                    <p>A web application that uses deep learning to analyze skin images and identify potential cancerous lesions with a user-friendly interface.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">JavaScript</span>
+                <div class="glass-card project-card reveal-el">
+                    <div class="proj-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80"
+                            alt="Skin Cancer Detection" loading="lazy">
+                        <div class="proj-overlay"><a href="#" class="proj-link"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                        <span class="proj-date">December 2025</span>
                     </div>
-                    <p><strong>Features:</strong> Image upload/capture, Benign/Malignant prediction, Responsive design</p>
+                    <div class="proj-body">
+                        <h3>Skin Cancer Detection System</h3>
+                        <p>AI-based image classification using Deep Learning to detect skin cancer from dermoscopic
+                            images with real-time prediction.</p>
+                        <div class="tags">
+                            <span>Python</span><span>PyTorch</span><span>HuggingFace</span><span>OpenCV</span><span>FastAPI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card project-card reveal-el">
+                    <div class="proj-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                            alt="HireFlow" loading="lazy">
+                        <div class="proj-overlay"><a href="#" class="proj-link"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                        <span class="proj-date">2025</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>HireFlow - Smart Job Portal & ATS</h3>
+                        <p>MERN stack smart job portal and applicant tracking system with secure auth and real-time
+                            tracking.</p>
+                        <div class="tags">
+                            <span>MongoDB</span><span>Express.js</span><span>React.js</span><span>Node.js</span><span>JWT
+                                Auth</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card project-card reveal-el">
+                    <div class="proj-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=600&q=80"
+                            alt="Wheels to Watts" loading="lazy">
+                        <div class="proj-overlay"><a href="#" class="proj-link"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                        <span class="proj-date">2025</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>Wheels to Watts</h3>
+                        <p>A system that converts mechanical energy from bicycle motion into electrical energy for
+                            charging devices and powering LEDs.</p>
+                        <div class="tags"><span>Dynamo</span><span>Voltage Regulator</span><span>Battery
+                                Storage</span><span>IoT</span><span>Circuit Design</span></div>
+                        <button class="btn-details" onclick="openModal('wheelsModal')"><i
+                                class="fas fa-info-circle"></i> More Details</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="section-wave"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,40 C480,120 960,0 1440,80 L1440,120 L0,120 Z" fill="var(--bg-section)" />
+            </svg></div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
+    <!-- Skills -->
+    <section id="skills" class="section-alt">
         <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <p class="section-subtitle">My technical expertise across different domains</p>
-            
-            <div class="skills-container">
-                <div class="skill-category card">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>C / C++</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Java</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>JavaScript</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
-                        </div>
+            <h2 class="section-title reveal-el">Skills & Technologies</h2>
+            <p class="section-sub reveal-el">My technical expertise across different domains</p>
+            <div class="skills-grid">
+                <div class="glass-card skill-group reveal-el">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="ring-grid">
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="90" />
+                            </svg><span class="ring-label">C/C++</span><span class="ring-pct">90%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="85" />
+                            </svg><span class="ring-label">Python</span><span class="ring-pct">85%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="80" />
+                            </svg><span class="ring-label">Java</span><span class="ring-pct">80%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="88" />
+                            </svg><span class="ring-label">JavaScript</span><span class="ring-pct">88%</span></div>
                     </div>
                 </div>
-                
-                <div class="skill-category card">
-                    <h3>Web Development</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>HTML / CSS</span>
-                            <span>92%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 92%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>React.js</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Express.js / Node.js</span>
-                            <span>82%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 82%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>MongoDB</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
+                <div class="glass-card skill-group reveal-el">
+                    <h3><i class="fas fa-globe"></i> Frontend</h3>
+                    <div class="ring-grid">
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="92" />
+                            </svg><span class="ring-label">HTML/CSS</span><span class="ring-pct">92%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="85" />
+                            </svg><span class="ring-label">React.js</span><span class="ring-pct">85%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="82" />
+                            </svg><span class="ring-label">Tailwind</span><span class="ring-pct">82%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="88" />
+                            </svg><span class="ring-label">ES6+</span><span class="ring-pct">88%</span></div>
                     </div>
                 </div>
-                
-                <div class="skill-category card">
-                    <h3>Tools & Concepts</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Data Structures & Algorithms</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
+                <div class="glass-card skill-group reveal-el">
+                    <h3><i class="fas fa-server"></i> Backend & Database</h3>
+                    <div class="ring-grid">
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="85" />
+                            </svg><span class="ring-label">Node/Express</span><span class="ring-pct">85%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="82" />
+                            </svg><span class="ring-label">MongoDB</span><span class="ring-pct">82%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="75" />
+                            </svg><span class="ring-label">MySQL</span><span class="ring-pct">75%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="88" />
+                            </svg><span class="ring-label">REST APIs</span><span class="ring-pct">88%</span></div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Git & GitHub</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>VS Code / IntelliJ</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>REST APIs</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
+                </div>
+                <div class="glass-card skill-group reveal-el">
+                    <h3><i class="fas fa-tools"></i> Tools & Concepts</h3>
+                    <div class="ring-grid">
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="88" />
+                            </svg><span class="ring-label">Git/GitHub</span><span class="ring-pct">88%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="95" />
+                            </svg><span class="ring-label">VS Code</span><span class="ring-pct">95%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="90" />
+                            </svg><span class="ring-label">DSA/OOP</span><span class="ring-pct">90%</span></div>
+                        <div class="ring-item"><svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" data-pct="78" />
+                            </svg><span class="ring-label">AWS/Vercel</span><span class="ring-pct">78%</span></div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="section-wave wave-flip"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,80 C480,0 960,120 1440,40 L1440,120 L0,120 Z" fill="var(--bg-main)" />
+            </svg></div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" style="background-color: #f8fafc;">
+    <!-- Achievements -->
+    <section id="achievements">
         <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <p class="section-subtitle">Professional certifications I've earned</p>
-            
-            <div class="certifications-grid">
-                <div class="certification-card card">
-                    <div class="cert-icon">
-                        <i class="fab fa-html5"></i>
-                    </div>
+            <h2 class="section-title reveal-el">Achievements</h2>
+            <p class="section-sub reveal-el">Recognitions and milestones in my journey</p>
+            <div class="ach-grid">
+                <div class="glass-card ach-card reveal-el">
+                    <div class="ach-icon gold"><i class="fas fa-trophy"></i></div>
                     <div>
-                        <h3>HTML & CSS</h3>
-                        <p>SoloLearn</p>
-                        <p>Completed comprehensive course covering modern HTML5 and CSS3 techniques</p>
+                        <h4>Finalist at National Startup 2.0</h4>
+                        <p>Recognized for presenting an innovative startup solution at the national level.</p><span
+                            class="ach-year">2026</span>
                     </div>
                 </div>
-                
-                <div class="certification-card card">
-                    <div class="cert-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+                <div class="glass-card ach-card reveal-el">
+                    <div class="ach-icon purple"><i class="fas fa-medal"></i></div>
                     <div>
-                        <h3>C Programming</h3>
-                        <p>Hands-On Course</p>
-                        <p>Practical C programming with focus on problem-solving and algorithms</p>
+                        <h4>Finalist - Proto-Thon National Hackathon</h4>
+                        <p>Demonstrated strong problem-solving and rapid development skills.</p><span
+                            class="ach-year">2026</span>
                     </div>
                 </div>
-                
-                <div class="certification-card card">
-                    <div class="cert-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
+                <div class="glass-card ach-card reveal-el">
+                    <div class="ach-icon cyan"><i class="fas fa-lightbulb"></i></div>
                     <div>
-                        <h3>Python Fundamentals</h3>
-                        <p>Infosys Springboard</p>
-                        <p>Core Python programming concepts and applications</p>
+                        <h4>Finalist - Pals Innovah Hackathon</h4>
+                        <p>Presented innovative and impactful solution at national level hackathon.</p><span
+                            class="ach-year">2026</span>
                     </div>
                 </div>
-                
-                <div class="certification-card card">
-                    <div class="cert-icon">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
+                <div class="glass-card ach-card reveal-el">
+                    <div class="ach-icon green"><i class="fas fa-rocket"></i></div>
                     <div>
-                        <h3>Data Structures</h3>
-                        <p>Udemy</p>
-                        <p>Comprehensive data structures course with implementation in C++</p>
+                        <h4>Finalist - Global TN Startup</h4>
+                        <p>Showcased entrepreneurial vision and scalable innovation.</p><span
+                            class="ach-year">2026</span>
                     </div>
                 </div>
-                
-                <div class="certification-card card">
-                    <div class="cert-icon">
-                        <i class="fab fa-java"></i>
-                    </div>
+                <div class="glass-card ach-card reveal-el">
+                    <div class="ach-icon gold"><i class="fas fa-award"></i></div>
                     <div>
-                        <h3>Java Programming</h3>
-                        <p>SkillRack & Scaler</p>
-                        <p>Object-oriented programming and Java development fundamentals</p>
+                        <h4>Runner-Up at Creathon</h4>
+                        <p>Awarded for creativity, technical excellence, and impactful solution design.</p><span
+                            class="ach-year">2025</span>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="section-wave"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="var(--bg-section)" />
+            </svg></div>
     </section>
 
-    <!-- Coding Profiles & Internship -->
+    <!-- Certifications -->
+    <section id="certifications" class="section-alt">
+        <div class="container">
+            <h2 class="section-title reveal-el">Certifications</h2>
+            <p class="section-sub reveal-el">Professional certifications I've earned</p>
+            <div class="cert-grid">
+                <div class="glass-card cert-card reveal-el">
+                    <div class="cert-icon"><i class="fab fa-html5"></i></div>
+                    <div>
+                        <h3>HTML & CSS</h3><span class="cert-prov">SoloLearn</span><span class="cert-yr">2024</span>
+                    </div>
+                </div>
+                <div class="glass-card cert-card reveal-el">
+                    <div class="cert-icon"><i class="fas fa-code"></i></div>
+                    <div>
+                        <h3>C Programming (Hands-On)</h3><span class="cert-prov">Hands-On Course</span><span
+                            class="cert-yr">2024</span>
+                    </div>
+                </div>
+                <div class="glass-card cert-card reveal-el">
+                    <div class="cert-icon"><i class="fab fa-python"></i></div>
+                    <div>
+                        <h3>Python Fundamentals</h3><span class="cert-prov">Infosys Springboard</span><span
+                            class="cert-yr">2025</span>
+                    </div>
+                </div>
+                <div class="glass-card cert-card reveal-el">
+                    <div class="cert-icon"><i class="fas fa-sitemap"></i></div>
+                    <div>
+                        <h3>Data Structures & Algorithms</h3><span class="cert-prov">Udemy</span><span
+                            class="cert-yr">2025</span>
+                    </div>
+                </div>
+                <div class="glass-card cert-card reveal-el">
+                    <div class="cert-icon"><i class="fab fa-java"></i></div>
+                    <div>
+                        <h3>Java Programming</h3><span class="cert-prov">SkillRack & Scaler</span><span
+                            class="cert-yr">2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-wave wave-flip"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,80 C480,0 960,120 1440,40 L1440,120 L0,120 Z" fill="var(--bg-main)" />
+            </svg></div>
+    </section>
+
+    <!-- Coding Profiles -->
     <section id="coding">
         <div class="container">
-            <h2 class="section-title">Coding Profiles & Internship</h2>
-            <p class="section-subtitle">My competitive programming journey and professional experience</p>
-            
-            <div class="coding-profiles">
-                <div class="profile-card card">
-                    <div class="profile-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+            <h2 class="section-title reveal-el">Coding Profiles & Experience</h2>
+            <p class="section-sub reveal-el">My competitive programming journey and professional experience</p>
+            <div class="profiles-row">
+                <div class="glass-card profile-card reveal-el">
+                    <div class="prof-icon"><i class="fas fa-code"></i></div>
                     <h3>LeetCode</h3>
-                    <div class="profile-stats">160+</div>
+                    <div class="prof-stat"><span class="stat-num" data-target="165">0</span>+</div>
                     <p>Problems Solved</p>
-                    <p>Global Rank: 1,147,814</p>
+                    <p>Max Rating: <strong>1533</strong></p>
                 </div>
-                
-                <div class="profile-card card">
-                    <div class="profile-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
+                <div class="glass-card profile-card reveal-el">
+                    <div class="prof-icon"><i class="fas fa-trophy"></i></div>
                     <h3>SkillRack</h3>
-                    <div class="profile-stats">850+</div>
+                    <div class="prof-stat"><span class="stat-num" data-target="850">0</span>+</div>
                     <p>Problems Solved</p>
                     <p>2 Certificates | 190+ Bronze</p>
                 </div>
             </div>
-            
-            <div class="achievement-card card">
-                <div class="achievement-icon">
-                    <i class="fas fa-award"></i>
+            <div class="glass-card intern-card reveal-el">
+                <h3><i class="fas fa-briefcase"></i> Campus Internship — MERN Stack Developer <span
+                        class="intern-yr">2025</span></h3>
+                <p>Worked on full-stack web application development using MERN stack, building responsive frontend
+                    interfaces and scalable backend APIs. Contributed to database design, authentication systems, and
+                    REST API integration.</p>
+                <div class="tags">
+                    <span>MongoDB</span><span>Express.js</span><span>React.js</span><span>Node.js</span><span>Git</span><span>REST
+                        APIs</span>
                 </div>
-                <h3>National-Level Startup Ideathon Finalist</h3>
-                <p>Selected as a finalist in a national-level startup competition, showcasing innovative problem-solving and entrepreneurial thinking.</p>
-            </div>
-            
-            <div class="internship-card card">
-                <h3>Campus Internship - MERN Stack Development</h3>
-                <p>Completed a comprehensive campus internship focused on full-stack web development using the MERN stack (MongoDB, Express.js, React.js, Node.js).</p>
-                <div class="project-tech" style="margin-top: 20px;">
-                    <span class="tech-tag">MongoDB</span>
-                    <span class="tech-tag">Express.js</span>
-                    <span class="tech-tag">React.js</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Full-Stack Development</span>
-                    <span class="tech-tag">REST APIs</span>
-                    <span class="tech-tag">JWT Authentication</span>
-                </div>
-                <p style="margin-top: 20px;"><strong>Key Experience:</strong> Developed complete web applications from frontend to backend, implemented user authentication, database design, and responsive UI components.</p>
             </div>
         </div>
+        <div class="section-wave"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,40 C480,120 960,0 1440,80 L1440,120 L0,120 Z" fill="var(--bg-footer)" />
+            </svg></div>
     </section>
 
-    <!-- Contact Section -->
-    <footer id="contact">
+    <!-- Resume -->
+    <section id="resume" class="section-alt">
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <div class="footer-logo">Jeseem</div>
-                    <p>Full Stack & Web Developer passionate about building scalable applications and innovative software solutions.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+            <h2 class="section-title reveal-el">Resume</h2>
+            <p class="section-sub reveal-el">Download my resume or preview key highlights below</p>
+            <div class="resume-wrapper reveal-el">
+                <div class="glass-card resume-hero-card">
+                    <div class="resume-icon"><i class="fas fa-file-pdf"></i></div>
+                    <h3>Mohamed Jeseem T</h3>
+                    <p>Full Stack & MERN Developer</p>
+                    <a href="jeseem_resume_mainnn.pdf" download class="btn btn-glow resume-btn"><i
+                            class="fas fa-download"></i>
+                        Download Resume</a>
+                </div>
+                <div class="resume-highlights">
+                    <div class="glass-card resume-card reveal-el">
+                        <div class="resume-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h4>Education</h4>
+                        <p>BE.CCE at Sri Eshwar College of Engineering — CGPA: 8.16</p>
+                    </div>
+                    <div class="glass-card resume-card reveal-el">
+                        <div class="resume-card-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h4>Skills</h4>
+                        <p>React, Node.js, MongoDB, Python, PyTorch, REST APIs, Git</p>
+                    </div>
+                    <div class="glass-card resume-card reveal-el">
+                        <div class="resume-card-icon"><i class="fas fa-briefcase"></i></div>
+                        <h4>Experience</h4>
+                        <p>Campus Internship — MERN Stack Developer (2025)</p>
+                    </div>
+                    <div class="glass-card resume-card reveal-el">
+                        <div class="resume-card-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>Achievements</h4>
+                        <p>5+ National Hackathon Finals & Startup Awards</p>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+        <div class="section-wave wave-flip"><svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,0 1080,120 1440,60 L1440,120 L0,120 Z" fill="var(--bg-footer)" />
+            </svg></div>
+    </section>
+
+    <!-- Project Detail Modal -->
+    <div class="modal-overlay" id="wheelsModal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" onclick="closeModal('wheelsModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-bicycle"></i></div>
+                <h2>Wheels to Watts</h2>
+            </div>
+            <div class="modal-body">
+                <p>Wheels to Watts is a system that converts mechanical energy from bicycle motion into electrical
+                    energy. It uses a dynamo, voltage regulator, and battery storage to generate stable power for
+                    charging devices like mobile phones and powering LEDs.</p>
+                <h4>Key Features</h4>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Dynamo-based energy harvesting from bicycle wheel rotation
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Voltage regulator circuit for stable 5V output</li>
+                    <li><i class="fas fa-check-circle"></i> Rechargeable battery storage system</li>
+                    <li><i class="fas fa-check-circle"></i> USB charging port for mobile devices</li>
+                    <li><i class="fas fa-check-circle"></i> LED lighting powered by pedal energy</li>
+                    <li><i class="fas fa-check-circle"></i> Eco-friendly and sustainable power solution</li>
+                </ul>
+                <div class="modal-tags"><span>Dynamo</span><span>Voltage Regulator</span><span>Battery
+                        Storage</span><span>IoT</span><span>Circuit Design</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">JT<span class="logo-dot">.</span></div>
+                    <p class="footer-desc">Full Stack & MERN Developer passionate about building scalable applications
+                        and AI-powered solutions.</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/mohamed-jeseem-t-64402a389" target="_blank"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/jeseemmoham" target="_blank" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+
+                    </div>
+                </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
@@ -1205,139 +542,24 @@
                         <li><a href="#education">Education</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#skills">Skills</a></li>
-                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#resume">Resume</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-links">
                     <h3>Contact Info</h3>
-                    <div class="contact-info">
-                        <i class="fas fa-envelope"></i>
-                        <span>jeseemmoham345@gmail.com</span>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 93610 96903</span>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Sri Eshwar College of Engineering, Coimbatore</span>
-                    </div>
+                    <div class="contact-row"><i
+                            class="fas fa-envelope"></i><span>mohamedjeseem.2024cce@sece.ac.in</span></div>
+                    <div class="contact-row"><i class="fas fa-phone"></i><span>+91 93610 96903</span></div>
+                    <div class="contact-row"><i class="fas fa-map-marker-alt"></i><span>Sri Eshwar College of
+                            Engineering, Coimbatore</span></div>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2024 Jeseem. All Rights Reserved.</p>
-            </div>
+            <div class="copyright">&copy; 2026 Mohamed Jeseem T. All Rights Reserved.</div>
         </div>
     </footer>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-        
-        // Check for saved theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-        
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.querySelector('i').classList.toggle('fa-times');
-            menuToggle.querySelector('i').classList.toggle('fa-bars');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-                menuToggle.querySelector('i').classList.add('fa-bars');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                if (document.body.classList.contains('dark-mode')) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
-                }
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                if (document.body.classList.contains('dark-mode')) {
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
-                }
-            }
-        });
-        
-        // Project details toggle function
-        function toggleProjectDetails(projectId) {
-            const detailsElement = document.getElementById(projectId + '-details');
-            const button = document.querySelector(`[onclick="toggleProjectDetails('${projectId}')"]`);
-            const icon = button.querySelector('i');
-            
-            detailsElement.classList.toggle('active');
-            
-            if (detailsElement.classList.contains('active')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-                button.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
-            } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-                button.innerHTML = '<i class="fas fa-chevron-down"></i> More About This Project';
-            }
-        }
-        
-        // Initialize project details as collapsed
-        document.addEventListener('DOMContentLoaded', function() {
-            // All project details start collapsed
-            const projectDetails = document.querySelectorAll('.project-details');
-            projectDetails.forEach(detail => {
-                detail.style.maxHeight = '0';
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
